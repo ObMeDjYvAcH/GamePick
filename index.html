@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #board {
+        position: relative;
+        width: 507px;
+        height: 385px;
+        margin: auto;
+        background: url("img/board.png");
+      }
+      #firstTable {
+        position: absolute;
+      }
+      td #secondTable {
+        position: absolute;
+      }
+      td {
+        width: 130px;
+        height: 92px;
+      }
+      .pickbackground {
+        background: url("img/background.PNG");
+      }
+      .pick0 {
+        background: url("img/img1.png");
+      }
+      .pick1 {
+        background: url("img/img2.png");
+      }
+      .pick2 {
+        background: url("img/img3.png");
+      }
+      .pick3 {
+        background: url("img/img4.png");
+      }
+      .pick4 {
+        background: url("img/img5.png");
+      }
+      .pick5 {
+        background: url("img/img6.png");
+      }
+      .pick6 {
+        background: url("img/img7.png");
+      }
+      .pick7 {
+        background: url("img/img8.png");
+      }
+      form {
+        position: absolute;
+        bottom: -45px;
+        padding-left: 50px;
+      }
+      form input {
+        background-color: rgb(152, 207, 113);
+        border-color: rgb(83, 175, 19);
+        font-size: 2em;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="board">
+      <table id="firstTable">
+        <tr>
+          <td id="00" class="pickbackground"></td>
+          <td id="01" class="pickbackground"></td>
+          <td id="02" class="pickbackground"></td>
+          <td id="03" class="pickbackground"></td>
+        </tr>
+        <tr>
+          <td id="10" class="pickbackground"></td>
+          <td id="11" class="pickbackground"></td>
+          <td id="12" class="pickbackground"></td>
+          <td id="13" class="pickbackground"></td>
+        </tr>
+        <tr>
+          <td id="20" class="pickbackground"></td>
+          <td id="21" class="pickbackground"></td>
+          <td id="22" class="pickbackground"></td>
+          <td id="23" class="pickbackground"></td>
+        </tr>
+        <tr>
+          <td id="30" class="pickbackground"></td>
+          <td id="31" class="pickbackground"></td>
+          <td id="32" class="pickbackground"></td>
+          <td id="33" class="pickbackground"></td>
+        </tr>
+      </table>
+      <table id="secondTable">
+        <tr>
+          <td id="000"></td>
+          <td id="001"></td>
+          <td id="002"></td>
+          <td id="003"></td>
+        </tr>
+        <tr>
+          <td id="010"></td>
+          <td id="011"></td>
+          <td id="012"></td>
+          <td id="013"></td>
+        </tr>
+        <tr>
+          <td id="020"></td>
+          <td id="021"></td>
+          <td id="022"></td>
+          <td id="023"></td>
+        </tr>
+        <tr>
+          <td id="030"></td>
+          <td id="031"></td>
+          <td id="032"></td>
+          <td id="033"></td>
+        </tr>
+      </table>
+      <form>
+        <input type="buttom" id="startBottom" value="Start Game" />
+      </form>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
