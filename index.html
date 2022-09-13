@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: rgb(235, 129, 31);
+      }
       #board {
         position: relative;
-        width: 507px;
-        height: 385px;
+        width: 506px;
+        height: 378px;
         margin: auto;
-        background: url("img/board.png");
+        background-color: blue;
       }
       #firstTable {
         position: absolute;
@@ -21,6 +29,35 @@
       td {
         width: 130px;
         height: 92px;
+      }
+      #timer {
+        background-color: red;
+        width: 20%;
+        height: 35px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 15px 15px 0px 0px;
+        border: 5px solid brown;
+      }
+      #button input {
+        display: inline-block;
+        padding: 10px;
+        margin-top: 10px;
+        margin-left: 30%;
+        width: 40%;
+        background-color: rgb(231, 194, 25);
+        text-align: center;
+        color: brown;
+        border-radius: 15px;
+        font-size: larger;
+        font-weight: 700;
+        font-style: normal;
+        border: 3px solid brown;
+        cursor: pointer;
+      }
+      #button input:hover {
+        background-color: rgb(245, 110, 110);
+        color: red;
       }
       .pickbackground {
         background: url("img/background.PNG");
@@ -49,20 +86,10 @@
       .pick7 {
         background: url("img/img8.png");
       }
-      form {
-        position: absolute;
-        bottom: -45px;
-        padding-left: 50px;
-      }
-      form input {
-        background-color: rgb(152, 207, 113);
-        border-color: rgb(83, 175, 19);
-        font-size: 2em;
-        text-align: center;
-      }
     </style>
   </head>
   <body>
+    <div id="timer"></div>
     <div id="board">
       <table id="firstTable">
         <tr>
@@ -116,11 +143,15 @@
           <td id="033"></td>
         </tr>
       </table>
-      <form>
-        <input type="buttom" id="startBottom" value="Start Game" />
+      <form id="button">
+        <input
+          id="buttonFirst"
+          onclick="changeTextOnButton(this)"
+          type="button"
+          value="Click to Start"
+        />
       </form>
     </div>
-    <h1>TEXT</h1>
     <script src="index.js"></script>
   </body>
 </html>

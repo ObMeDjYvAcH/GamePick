@@ -1,5 +1,6 @@
 var testNum = 0;
 var testNum2 = 0;
+var testNum3 = 0;
 var testNumIdFirst;
 var testNumIdSecond;
 var testNumClassFirst;
@@ -96,7 +97,7 @@ function makeClick(eventObj) {
         testNumClassSecond = document.getElementById("0" + mouseMoove.id);
         mouseMoove.setAttribute("class", testNumClassSecond.classList.value);
         testNum = 3;
-        setTimeout(funcchangeback, 1500);
+        setTimeout(funcchangeback, 900);
       }
     }
   }
@@ -135,7 +136,7 @@ function counter2() {
   }
 }
 function init() {
-  var test = document.getElementById("startBottom");
+  var test = document.getElementById("button");
   test.onclick = startFun;
 }
 function startFun() {
@@ -143,5 +144,8 @@ function startFun() {
   makeMassivNum();
   counter();
   counter2();
+}
+function changeTextOnButton(elem) {
+  elem.value = "Game is started ";
 }
 window.onload = init;
