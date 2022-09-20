@@ -7,14 +7,6 @@ var testNumClassFirst;
 var testNumClassSecond;
 var mainEmptyMass = [];
 var ConstantMassiv = [];
-function makeMassivNum() {
-  for (var i = 0; i < 4; i++) {
-    for (var j = 0; j < 4; j++) {
-      var time = [i] + [j];
-      ConstantMassiv.push(time);
-    }
-  }
-}
 function makeMass() {
   var emptyMass = [];
   var emptyMass2 = [];
@@ -49,53 +41,41 @@ function makeMass() {
   console.log(mainEmptyMass);
 }
 
-function getPick(location, num) {
-  var image = document.getElementById(location);
-  image.setAttribute("class", mainEmptyMass[num]);
-}
+// ------------------------------------------
 
-function counter() {
-  var counter = 0;
-  for (var i = 0; i < 4; i++) {
-    for (var j = 0; j < 4; j++) {
-      var time = "0" + [i] + [j];
-      getPick(time, counter);
-      counter++;
-    }
-  }
-}
 function press(num) {
   var test = document.getElementById(num);
   test.onclick = makeClick;
 }
 function makeClick(eventObj) {
   var mouseMoove;
+  var testText;
   mouseMoove = eventObj.target;
   if (testNum < 2) {
     if (testNum === 0) {
       testNumIdFirst = mouseMoove.id;
-      testNumClassFirst = document.getElementById("0" + mouseMoove.id);
-      if (testNum2 === 1) {
-        if (ConstantMassiv.indexOf(testNumIdFirst) === -1) {
-          alert("картинка уже открыта");
-          testNum = 0;
-          return 0;
-        }
+      if (mainEmptyMass[testNumIdFirst] === "empty") {
+        alert("картинка уже открыта");
+        testNum = 0;
+        return 0;
       }
-      mouseMoove.setAttribute("class", testNumClassFirst.classList.value);
-      testNum++;
+      testText = document.getElementById(mouseMoove.id);
+      testText.setAttribute("class", mainEmptyMass[mouseMoove.id]);
+      testNumClassFirst = testText.classList.value;
+      testNum = 1;
     } else if (testNum === 1) {
       testNumIdSecond = mouseMoove.id;
-      if (testNumIdFirst === testNumIdSecond) {
-        alert("нужно выбрать другое поле");
-        testNum = 1;
-      } else if (ConstantMassiv.indexOf(testNumIdSecond) === -1) {
+      if (mainEmptyMass[testNumIdSecond] === "empty") {
         alert("картинка уже открыта");
         testNum = 1;
         return 0;
+      } else if (testNumIdFirst === testNumIdSecond) {
+        alert("нужно выбрать другое поле");
+        testNum = 1;
       } else {
-        testNumClassSecond = document.getElementById("0" + mouseMoove.id);
-        mouseMoove.setAttribute("class", testNumClassSecond.classList.value);
+        testText = document.getElementById(mouseMoove.id);
+        testText.setAttribute("class", mainEmptyMass[mouseMoove.id]);
+        testNumClassSecond = testText.classList.value;
         testNum = 3;
         setTimeout(funcchangeback, 900);
       }
@@ -103,49 +83,48 @@ function makeClick(eventObj) {
   }
 }
 function funcchangeback() {
-  if (
-    testNumClassFirst.classList.value === testNumClassSecond.classList.value
-  ) {
-    for (var i = 0; i < ConstantMassiv.length; i++) {
-      if (testNumIdFirst === ConstantMassiv[i]) {
-        ConstantMassiv.splice(i, 1);
+  var timeTest1 = document.getElementById(testNumIdFirst);
+  var timeTest2 = document.getElementById(testNumIdSecond);
+  if (testNumClassFirst === testNumClassSecond) {
+    timeTest1.setAttribute("class", testNumClassFirst);
+    timeTest2.setAttribute("class", testNumClassSecond);
+    mainEmptyMass[testNumIdFirst] = "empty";
+    mainEmptyMass[testNumIdSecond] = "empty";
+    testNum = 0;
+    return 0;
+  } else {
+    for (var i = 0; i < 16; i++) {
+      if (mainEmptyMass[i] !== "empty") {
+        var test = document.getElementById(i);
+        test.setAttribute("class", "pickbackground");
       }
     }
-    for (var i = 0; i < ConstantMassiv.length; i++) {
-      if (testNumIdSecond === ConstantMassiv[i]) {
-        ConstantMassiv.splice(i, 1);
-        testNum = 0;
-        testNum2 = 1;
-        return 0;
-      }
-    }
-  }
-  for (var i = 0; i < ConstantMassiv.length; i++) {
-    var test = ConstantMassiv[i];
-    var test2 = document.getElementById(test);
-    test2.setAttribute("class", "pickbackground");
     testNum = 0;
   }
 }
 function counter2() {
-  for (var i = 0; i < 4; i++) {
-    for (var j = 0; j < 4; j++) {
-      var time = [i] + [j];
-      press(time);
-    }
+  for (var i = 0; i < mainEmptyMass.length; i++) {
+    var time = [i];
+    press(time);
   }
 }
-function init() {
-  var test = document.getElementById("button");
-  test.onclick = startFun;
-}
-function startFun() {
-  makeMass();
-  makeMassivNum();
-  counter();
-  counter2();
-}
-function changeTextOnButton(elem) {
-  elem.value = "Game is started ";
-}
-window.onload = init;
+// test = document.getElementById(mouseMoove.id);
+//   test.setAttribute("class", mainEmptyMass[mouseMoove.id]);
+// console.log(test);
+// function init() {
+//   var test = document.getElementById("button");
+//   test.onclick = startFun;
+// }
+// function startFun() {
+//   makeMass();
+//   makeMassivNum();
+//   counter();
+//   counter2();
+// }
+// function changeTextOnButton(elem) {
+//   elem.value = "Game is started ";
+// }
+// window.onload = init;
+
+makeMass();
+counter2();
