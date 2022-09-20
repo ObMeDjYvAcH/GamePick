@@ -32,6 +32,7 @@
         font-weight: 700;
         font-style: normal;
         border: 3px solid brown;
+        text-align: center;
         cursor: pointer;
       }
       .container_Button:hover {
@@ -73,7 +74,7 @@
   <body>
     <div class="container flex">
       <div>
-        <button class="container_Button">Timer</button>
+        <input class="container_Button" class="container_ButtonFirst" id="container_ButtonFirst"  value="Timer" ></input>
       </div>
       <table class="container_Table">
         <tr>
@@ -102,7 +103,7 @@
         </tr>
       </table>
       <div>
-        <button class="container_Button">Click to start</button>
+          <input class="container_Button" id="container_ButtonSecond" type="button" value="Click to start"></input>
       </div>
     </div>
     <script src="index.js"></script>

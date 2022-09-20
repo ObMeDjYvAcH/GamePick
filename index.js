@@ -1,12 +1,11 @@
 var testNum = 0;
-var testNum2 = 0;
-var testNum3 = 0;
 var testNumIdFirst;
 var testNumIdSecond;
 var testNumClassFirst;
 var testNumClassSecond;
 var mainEmptyMass = [];
-var ConstantMassiv = [];
+var NumFirst = 0;
+var NumSecond = 0;
 function makeMass() {
   var emptyMass = [];
   var emptyMass2 = [];
@@ -108,23 +107,34 @@ function counter2() {
     press(time);
   }
 }
-// test = document.getElementById(mouseMoove.id);
-//   test.setAttribute("class", mainEmptyMass[mouseMoove.id]);
-// console.log(test);
-// function init() {
-//   var test = document.getElementById("button");
-//   test.onclick = startFun;
-// }
-// function startFun() {
-//   makeMass();
-//   makeMassivNum();
-//   counter();
-//   counter2();
-// }
-// function changeTextOnButton(elem) {
-//   elem.value = "Game is started ";
-// }
-// window.onload = init;
+function changeText() {
+  var test = document.getElementById("container_ButtonSecond");
+  test.value = "GAME IS ON";
+}
+function timer() {
+  var test = document.getElementById("container_ButtonFirst");
+  if (NumFirst < 59) {
+    NumFirst++;
+    test.value = NumSecond + ":" + NumFirst;
+  } else if (NumFirst === 59) {
+    test.value = NumSecond + ":" + NumFirst;
+    NumFirst = 0;
+    NumSecond++;
+    test.value = NumSecond + ":" + NumFirst;
+  }
+}
+function init() {
+  var test = document.getElementById("container_ButtonSecond");
+  test.onclick = startFun;
+}
+function startFun() {
+  makeMass();
+  counter2();
+  changeText();
+  setInterval("timer()", 1000);
+}
 
-makeMass();
-counter2();
+window.onload = init;
+
+// makeMass();
+// counter2();
